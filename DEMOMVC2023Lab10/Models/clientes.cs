@@ -31,6 +31,7 @@ namespace DEMOMVC2023Lab10.Models
         public string Pais { get; set; }
         public string Telefono { get; set; }
         public string Fax { get; set; }
+        public Nullable<bool> Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedidos> Pedidos { get; set; }

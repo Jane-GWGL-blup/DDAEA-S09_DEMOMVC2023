@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NeptunoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NeptunoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="categorias">
           <Key>
             <PropertyRef Name="idcategoria" />
@@ -30,6 +30,7 @@
           <Property Name="Pais" Type="varchar" MaxLength="100" />
           <Property Name="Telefono" Type="varchar" MaxLength="30" />
           <Property Name="Fax" Type="varchar" MaxLength="30" />
+          <Property Name="Activo" Type="bit" />
         </EntityType>
         <EntityType Name="compañiasdeenvios">
           <Key>
@@ -257,8 +258,7 @@ advertencia 6002: La tabla o vista 'Neptuno.dbo.detallesdepedidos' no tiene defi
             <End Role="productos" EntitySet="productos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NeptunoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -289,6 +289,7 @@ advertencia 6002: La tabla o vista 'Neptuno.dbo.detallesdepedidos' no tiene defi
           <Property Name="Telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Fax" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Pedidos" Relationship="Self.fk_5" FromRole="clientes" ToRole="Pedidos" />
+          <Property Name="Activo" Type="Boolean" />
         </EntityType>
         <EntityType Name="compañiasdeenvios">
           <Key>
@@ -538,6 +539,7 @@ advertencia 6002: La tabla o vista 'Neptuno.dbo.detallesdepedidos' no tiene defi
           <EntitySetMapping Name="clientes">
             <EntityTypeMapping TypeName="NeptunoModel.clientes">
               <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="idCliente" ColumnName="idCliente" />
                 <ScalarProperty Name="NombreCompañia" ColumnName="NombreCompañia" />
                 <ScalarProperty Name="NombreContacto" ColumnName="NombreContacto" />

@@ -17,7 +17,7 @@ namespace DEMOMVC2023Lab10.Controllers
         // GET: clientes
         public ActionResult Index()
         {
-            return View(db.clientes.ToList());
+            return View(db.clientes.Where(x=>x.Activo==true).ToList());
         }
 
         // GET: clientes/Details/5
@@ -114,7 +114,7 @@ namespace DEMOMVC2023Lab10.Controllers
             db.SaveChanges();*/
             clientes cliente = db.clientes.Find(id);
             db.Entry(cliente).State = EntityState.Modified;
-            cliente.Activo = False;
+            cliente.Activo = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
