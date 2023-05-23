@@ -32,10 +32,13 @@ namespace DEMOMVC2023Lab10.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idproducto,nombreProducto,precioUnidad,nombreCategoria")] productos productos)
+        public ActionResult Create([Bind(Include = "nombreProducto,precioUnidad,categoriaProducto")] productos productos)
         {
             if (ModelState.IsValid)
             {
+                int autogenerador = db.productos.Max(x => x.idproducto);
+                autogenerador++;
+                productos.idproducto = autogenerador;
                 db.productos.Add(productos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
